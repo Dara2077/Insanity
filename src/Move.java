@@ -21,13 +21,16 @@ public class Move {
         boolean test2 = false;
         //Test 1
         if (isRed()){
-            test1 = newPosition > initialPosition;
+            test1 = newPosition > initialPosition && newPosition < Board.getBoard().size();
         }
         else{
-            test1 = newPosition < initialPosition;
+            test1 = newPosition < initialPosition && newPosition >= 0;
         }
         if (Board.getBoard().get(newPosition).equals("-")){
             test2 = true;
+        }
+        if (!(test1 && test2)){
+            System.out.println("That is not a valid move!");
         }
         return test1 && test2;
     }
@@ -43,11 +46,12 @@ public class Move {
                 character = "B";
             }
             ArrayList<String> tempBoard = Board.getBoard();
-            tempBoard.add(newPosition, character);
             if (isRed){
+                tempBoard.add(newPosition + 1, character);
                 tempBoard.remove(initialPosition);
             }
             else{
+                tempBoard.add(newPosition, character);
                 tempBoard.remove(initialPosition + 1);
             }
             Board.setBoard(tempBoard);

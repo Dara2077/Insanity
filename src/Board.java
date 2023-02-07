@@ -2,11 +2,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Board {
-    private static ArrayList<String> board;
+    private static ArrayList<String> board = new ArrayList<>(Arrays.asList("R", "R", "R", "R", "-", "-", "B", "B", "B", "B"));
     private static boolean win = false;
     public Board(){
-        String[] initial = {"R", "R", "R", "R", "-", "-", "B", "B", "B", "B"};
-        ArrayList<String> board = new ArrayList<>(Arrays.asList(initial));
     }
 
     public static void setBoard(ArrayList<String> newBoard){
@@ -19,5 +17,17 @@ public class Board {
 
     public static boolean hasWon(){
         return win;
+    }
+
+    public static boolean checkWin(){
+        ArrayList<String> copy = new ArrayList<String>();
+        ArrayList<String> win = new ArrayList<>(Arrays.asList("R", "R", "R", "R", "-", "-", "B", "B", "B", "B"));
+        boolean check = true;
+        for (int i = 0; i < copy.size(); i ++){
+            if (!copy.get(i).equals(win.get(i))){
+                check = false;
+            }
+        }
+        return check;
     }
 }
