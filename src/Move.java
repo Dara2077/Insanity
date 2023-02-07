@@ -1,26 +1,58 @@
+import java.util.ArrayList;
+
 public class Move {
-    public Move (int position, int numSpaces){
 
-
+    private int initialPosition;
+    private int newPosition;
+    public Move (int initialPosition, int newPosition){
+        this.initialPosition = initialPosition;
+        this.newPosition = newPosition;
     }
 
-    private boolean isRed(int position){
-        if (Board.getBoard().substring(position, position + 1).equals("R")){
+    private boolean isRed(){
+        if (Board.getBoard().get(initialPosition).equals("R")){
             return true;
         }
         return false;
     }
 
-    public int newPosition(int position, int numSpaces){
-        int position2 = 0;
-        if (isRed(position)){
-            position2 = position + numSpaces;
+    public boolean validMove(){
+        boolean test1 = false;
+        boolean test2 = false;
+        //Test 1
+        if (isRed()){
+            test1 = newPosition > initialPosition;
         }
         else{
-            position2 = position - numSpaces;
+            test1 = newPosition < initialPosition;
         }
-        return position2;
+        if (Board.getBoard().get(newPosition).equals("-")){
+            test2 = true;
+        }
+        return test1 && test2;
     }
 
-    public int newBoard()
+    public void makeMove(){
+        if (validMove()){
+            String character = "";
+            Boolean isRed = isRed();
+            if (isRed){
+                character = "R";
+            }
+            else{
+                character = "B";
+            }
+            ArrayList<String> tempBoard = Board.getBoard();
+            tempBoard.add(newPosition, character);
+            if (isRed){
+                tempBoard.remove(initialPosition);
+            }
+            else{
+                tempBoard.remove(initialPosition + 1);
+            }
+            Board.setBoard(tempBoard);
+
+            //Have to see if it matches win condition by comparing aray lists
+        }
+    }
 }

@@ -1,15 +1,23 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class Board {
-    private static String board;
+    private static ArrayList<String> board;
+    private static boolean win = false;
     public Board(){
-        board = "RRRR--BBBB";
-        System.out.println(board);
+        String[] initial = {"R", "R", "R", "R", "-", "-", "B", "B", "B", "B"};
+        ArrayList<String> board = new ArrayList<>(Arrays.asList(initial));
     }
 
-    public static void setBoard(String newBoard){
+    public static void setBoard(ArrayList<String> newBoard){
         board = newBoard;
     }
 
-    public static String getBoard(){
+    public static ArrayList<String> getBoard(){
         return board;
+    }
+
+    public static boolean hasWon(){
+        return win;
     }
 }
