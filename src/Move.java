@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Move {
 
@@ -47,14 +48,15 @@ public class Move {
             }
             ArrayList<String> tempBoard = Board.getBoard();
             if (isRed){
-                tempBoard.add(newPosition + 1, character);
-                tempBoard.remove(initialPosition);
+                tempBoard.set(newPosition, character);
+                tempBoard.set(initialPosition, "-");
             }
             else{
-                tempBoard.add(newPosition, character);
-                tempBoard.remove(initialPosition + 1);
+                tempBoard.set(newPosition, character);
+                tempBoard.set(initialPosition, "-");
             }
             Board.setBoard(tempBoard);
+
 
             //Have to see if it matches win condition by comparing aray lists
         }

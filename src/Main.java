@@ -5,6 +5,7 @@ public class Main {
 
         Scanner scan = new Scanner(System.in);
         System.out.println("Welcome to Insanity!");
+        System.out.println(Board.getSpaces());
         System.out.println(Board.getBoard());
         while (!Board.hasWon()){
             System.out.print("Choose a space: ");
@@ -13,7 +14,9 @@ public class Main {
             int newPosition = scan.nextInt() - 1;
             Move myMove = new Move(position, newPosition);
             myMove.makeMove();
+            System.out.println(Board.getSpaces());
             System.out.println(Board.getBoard());
         }
+        System.out.println("You win! It took you __ moves!");
     }
 }
