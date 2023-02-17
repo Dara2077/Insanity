@@ -8,9 +8,9 @@ public class Main {
         System.out.println("\u001B[37m" + Board.getSpaces());
         Board.printBoard();
         while (!Board.hasWon()){
-            System.out.print("Choose a space: ");
+            System.out.print("\u001B[37m" + "Choose a space: ");
             int position = scan.nextInt() -1;
-            System.out.print("What is the new position? ");
+            System.out.print("\u001B[37m" + "What is the new position? ");
             int newPosition = scan.nextInt() - 1;
             Move myMove = new Move(position, newPosition);
             myMove.makeMove();
