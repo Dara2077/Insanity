@@ -5,6 +5,12 @@ public class Move {
 
     private int initialPosition;
     private int newPosition;
+    private static int moveCount = 0;
+
+    public static int getMoveCount() {
+        return moveCount;
+    }
+
     public Move (int initialPosition, int newPosition){
         this.initialPosition = initialPosition;
         this.newPosition = newPosition;
@@ -37,6 +43,7 @@ public class Move {
     }
 
     public void makeMove(){
+        moveCount ++;
         if (validMove()){
             String character = "";
             Boolean isRed = isRed();

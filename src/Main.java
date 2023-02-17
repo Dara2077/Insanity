@@ -16,7 +16,8 @@ public class Main {
             myMove.makeMove();
             System.out.println(Board.getSpaces());
             System.out.println(Board.getBoard());
+            Board.checkWin();
         }
-        System.out.println("You win! It took you __ moves!");
+        System.out.println("You win! It took you " + Move.getMoveCount() + " moves!");
     }
 }
